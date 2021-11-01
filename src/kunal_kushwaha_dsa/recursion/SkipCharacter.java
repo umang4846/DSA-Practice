@@ -1,4 +1,4 @@
-package recursion;
+package kunal_kushwaha_dsa.recursion;
 
 public class SkipCharacter {
 
