@@ -1,4 +1,4 @@
-package kunal_kushwaha_dsa.recursion;
+package kunal_kushwaha_dsa.backtracking;
 
 public class NQueens {
     public static void main(String[] args) {
