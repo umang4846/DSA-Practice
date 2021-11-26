@@ -11,11 +11,11 @@ public class ZeroOneKnapsackProblem {
         int[] price = new int[n];
 
         for (int i = 0; i < n; i++) {
-            weights[i] = scn.nextInt();
+            price[i] = scn.nextInt();
         }
 
         for (int i = 0; i < n; i++) {
-            price[i] = scn.nextInt();
+            weights[i] = scn.nextInt();
         }
         int cap = scn.nextInt();
 
