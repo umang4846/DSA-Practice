@@ -29,8 +29,8 @@ public class ArrangeBuildings {
     }
 
     public static void improvedCode() {
-        Scanner scn = new Scanner(System.in);
-        long n = scn.nextInt();
+        Scanner scanner = new Scanner(System.in);
+        long n = scanner.nextInt();
 
         long ob = 1;
         long os = 1;
