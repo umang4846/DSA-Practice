@@ -2,14 +2,17 @@ package kunal_kushwaha_dsa.recursion;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Subset {
     public static void main(String[] args) {
         //System.out.println(getSubset(new int[]{1,2,3}));
         System.out.println(getSubsetDuplicate(new int[]{1,2,2}));
-
+        LinkedList<Long> list = new LinkedList<>();
     }
+
+
 
     static List<List<Integer>> getSubset(int[] arr){
 
