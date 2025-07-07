@@ -1,70 +1,44 @@
-package main.java;
-
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class Test {
 
-   /* @Override
-    public int sum(int a, int b) {
-        return Interface1.super.sum(a, b);
-    }
-    */
-   /* public int sum(int a, int b){
-        return Interface1.sum(a,b);
-    }*/
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int[] arr = new int[]{10, 9, 8,7,6,5,4,3,2,1};
+        int[] bridges = new int[]{0, 3000, 4000, 5000, 6000};
+        int target = 4;
 
-        mergeSort(arr, 0, arr.length - 1);
-        System.out.println(Arrays.toString(arr));
+        int[] memo = new int[target + 1];
+        Arrays.fill(memo, -1);
 
-    }
-
-    public static void mergeSort(int[] arr, int start, int end) {
-        if (start < end) {
-            int mid = start + (end - start) / 2;
-            mergeSort(arr, start, mid);
-            mergeSort(arr, mid + 1, end);
-            mergeArray(arr, start, mid, end);
-        }
+        int ans = minimizeConstructionCost(bridges, 1, target, memo);
+        System.out.println(ans);
 
     }
 
-    private static void mergeArray(int[] arr, int start, int mid, int end) {
-        int[] left = new int[mid - start + 1];
-        int[] right = new int[end - mid];
+    private static int minimizeConstructionCost(int[] costs, int index, int targetLength, int[] memo) {
+        if (targetLength <= 0) {
+            return 0;
+        }
 
-        for (int i = 0; i < mid - start + 1; i++) {
-            left[i] = arr[start + i];
+        if(index >= costs.length){
+            return Integer.MAX_VALUE;
         }
-        for (int j = 0; j < end - mid; j++) {
-            right[j] = arr[mid + 1 + j];
+
+        if (memo[targetLength] != -1) {
+            return memo[targetLength];
         }
-        int i = 0, j = 0;
-        int k = start;
-        while (i < mid - start + 1 && j < end - mid) {
-            if (left[i] <= right[j]) {
-                arr[k] = left[i];
-                i++;
-            } else {
-                arr[k] = right[j];
-                j++;
+
+        int take = Integer.MAX_VALUE;
+        int notTake;
+        for (int start = index; start < costs.length; start++) {
+            if (start <= targetLength) {
+                take = costs[start] + minimizeConstructionCost(costs, start + 1, targetLength - start, memo);
             }
-            k++;
         }
-        while (i < mid - start + 1) {
-            arr[k] = left[i];
-            i++;
-            k++;
-        }
-        while (j < end - mid) {
-            arr[k] = right[j];
-            j++;
-            k++;
-        }
+
+        notTake = minimizeConstructionCost(costs, index + 1, targetLength, memo);
+
+        return memo[index] = Math.min(take, notTake);
 
     }
 }

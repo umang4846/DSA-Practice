@@ -9,6 +9,4 @@ public class Main {
         applyDiscount.setStrategy(new CashbackDiscount());
         applyDiscount.getDiscount();
     }
-
-
 }
